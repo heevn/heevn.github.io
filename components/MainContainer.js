@@ -1,19 +1,10 @@
-import { MyNavbar } from "../styles/styled"
-import Head from "next/head"
-import A from "../components/A"
+import Header from "./Header"
 
 function MainContainer({children, keywords}) {
     return(
         <>
-            <Head>
-                <meta keywords={"pizda, nextjs" + keywords}></meta>
-                <title>Главная страница</title>
-            </Head>
-            <MyNavbar>
-                <A href={'/'} text="Главная"/>
-                <A href={'/users'} text="Пользователи"/>
-            </MyNavbar>
-            <div>
+            <Header/>
+            <div style={{border: "solid", padding: "40px 162px", display: "flex"}}>
                 {children}
             </div>
         </>

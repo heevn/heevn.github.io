@@ -1,4 +1,4 @@
-import { MyLink } from "../styles/styled";
+import { MyLink } from "./styled";
 
 export default function A({text, href}) {
     return(

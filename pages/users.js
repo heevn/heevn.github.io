@@ -1,11 +1,9 @@
-import {useEffect, useState} from 'react'
 import Link from "next/link"
-import MainContainer from '../components/MainContainer';
 
 function Users({users}) {
 
     return (
-        <MainContainer keywords={"users next js"}>
+        <>
             <h1>Пользователи</h1>
             <ul>
                 {users.map(user =>
@@ -16,7 +14,7 @@ function Users({users}) {
                     </li>
                 )}
             </ul>
-        </MainContainer>
+        </>
     );
 };
 

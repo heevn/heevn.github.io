@@ -18,7 +18,7 @@ export const InfoWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 40px 333px;
+    padding: 40px 172px;
     row-gap: 20px;
 `
 

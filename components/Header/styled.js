@@ -16,6 +16,9 @@ export const HeaderWrapper = styled.div`
 export const LinksWrapper = styled.div`
     display: flex;
     column-gap: 60px;
+    & :hover{
+        color: #228be6;
+    }
 `
 
 export const StyledLogo = styled(Image)`

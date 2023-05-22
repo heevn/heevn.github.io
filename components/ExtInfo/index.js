@@ -6,7 +6,7 @@ export default function ExtInfo({text}) {
     entries = entries.split("!=+")
     console.log(text)
     console.log(titles)
-    if(entries.length !==1)
+    if(entries.length !==1 && entries[0] === "")
         entries.shift()
     console.log(entries)
   

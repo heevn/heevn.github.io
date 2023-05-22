@@ -1,6 +1,7 @@
 import { getFavorites } from "../API/getFavorites";
 import { getItems } from "../API/mocApi/getItems";
 import EmptyFav from "../components/EmptyFav";
+import PaginationBar from "../components/PaginationBar";
 import Vacancy from "../components/Vacancy";
 import { FavoriteWrapper } from "../public/styles";
 import { useState, useEffect } from "react";
@@ -8,15 +9,15 @@ import { useState, useEffect } from "react";
 function Favorite() {
     const [items, setItems] = useState([])
     const [page, setPage] = useState(1)
-    const fetchData = getFavorites()
+    const fetchData = getFavorites(page)
     useEffect(()=>{
-        getFavorites().then((data) => {
+        getFavorites(page).then((data) => {
             setItems(data.data.objects)
         })
     }, [page])
     useEffect(() => {
         //authenticate() //не удалять!!!!!!
-        fetchData.then((data) => {setItems(data.data.objects)}).catch(e=> console.log(e))
+        fetchData.then((data) => {console.log(data);setItems(data.data.objects)}).catch(e=> console.log(e))
     }, [])
 
     const [length, setLength] = useState() 
@@ -28,10 +29,14 @@ function Favorite() {
     return (
         <>
             {length? 
-
-                <FavoriteWrapper>
+                <>
+                 <FavoriteWrapper>
                 {items?.map((item) => <Vacancy text={item}/>)}
+                <PaginationBar activePage={page} setPage={setPage}/>
                 </FavoriteWrapper>
+                
+                </>
+               
                 :
                 <EmptyFav/>
             }

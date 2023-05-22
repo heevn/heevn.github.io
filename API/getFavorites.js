@@ -1,10 +1,11 @@
 import { $authHost } from ".";
 
-export const getFavorites = async() => {
+export const getFavorites = async(page) => {
     try{
         const data1 =  await $authHost.get(`${process.env.NEXT_PUBLIC_API_URL}/2.0/vacancies`, 
         {
             params:{
+              //  page:page, count: 4,
                 ids: JSON.parse(localStorage.getItem(`vacancy_id`))
             },
             headers:{

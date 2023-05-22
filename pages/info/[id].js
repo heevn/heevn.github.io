@@ -4,6 +4,7 @@ import Vacancy from "../../components/Vacancy"
 import { useState, useEffect } from "react"
 import { InfoWrapper } from "../../public/styles";
 import ExtInfo from "../../components/ExtInfo"
+import { Loader } from '@mantine/core';
 
 function Info() {
     const {query} = useRouter()
@@ -12,9 +13,7 @@ function Info() {
 
     useEffect(() => {dataI.then((data) => {console.log(data);setItem(data.data)})}, [])
     return( item === undefined?
-    <div>
-       LOADING!!!
-    </div>:
+    <Loader sx={{margin: "0 auto"}}/>:
     <InfoWrapper>
         <Vacancy text={item}/>
         <ExtInfo text={item.firm_activity}></ExtInfo>

@@ -4,7 +4,7 @@ function MainContainer({children, keywords}) {
     return(
         <>
             <Header/>
-            <div style={{border: "solid", padding: "40px 162px", display: "flex"}}>
+            <div style={{padding: "40px 162px", display: "flex"}}>
                 {children}
             </div>
         </>

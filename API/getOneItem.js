@@ -1,13 +1,9 @@
-import axios from "axios";
 import { $authHost } from ".";
 
-export const getItems = async(page) => {
+export const getOneItem = async (id) => {
     try{
-        const data1 =  await $authHost.get(`${process.env.NEXT_PUBLIC_API_URL}/2.0/vacancies`, 
+        const data1 =  await $authHost.get(`${process.env.NEXT_PUBLIC_API_URL}/2.0/vacancies/${id}`, 
         {
-            params:{
-                page: page, count: 4
-            },
             headers:{
                 "x-secret-key": process.env.NEXT_PUBLIC_X_SECRET_KEY,
                 "X-Api-App-Id": process.env.NEXT_PUBLIC_CLIENT_SECRET

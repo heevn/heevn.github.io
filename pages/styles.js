@@ -13,3 +13,15 @@ export const VacanciesWrapper = styled.div`
     display: flex;
     flex-direction: column;
 `
+
+export const InfoWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 333px;
+    row-gap: 20px;
+`
+
+export const FavoriteWrapper = styled(InfoWrapper)`
+    row-gap: 16px;
+`

@@ -12,7 +12,8 @@ export const authenticate = async() => {
                 hr: process.env.NEXT_PUBLIC_HR
             }, 
             headers:{
-                "x-secret-key": process.env.NEXT_PUBLIC_X_SECRET_KEY
+                "x-secret-key": process.env.NEXT_PUBLIC_X_SECRET_KEY,
+                "X-Api-App-Id": process.env.NEXT_PUBLIC_CLIENT_SECRET,
             }
         });
         localStorage.setItem(`access_token`, data.data.access_token)

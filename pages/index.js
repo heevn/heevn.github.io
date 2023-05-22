@@ -1,38 +1,36 @@
 import SearchFilter from "../components/SearchFilter";
 import Vacancy from "../components/Vacancy";
-import { Button, Input } from '@mantine/core';
 import { HomePageWrapper, VacanciesWrapper } from "./styles";
-import { IconSearch } from "@tabler/icons-react";
-import { IconAdjustmentsStar } from "@tabler/icons-react";
 import { authenticate } from "../API/auth";
 import { useEffect, useState } from "react";
 import { getItems } from "../API/getItems";
+import PaginationBar from "../components/PaginationBar";
+import SearchBar from "../components/SearchBar";
 
 function Index() {
     const [items, setItems] = useState([])
-    const fetchData = getItems(1,4)
+    const [page, setPage] = useState(1)
+    const [catalogue, setCatalogue] = useState()
+    const fetchData = getItems(1)
+    useEffect(()=>{
+        getItems(page).then((data) => {
+            setItems(data.data.objects)
+        })
+    }, [page])
     useEffect(() => {
-        console.log(fetchData)
-        setItems(fetchData.then((data) => data.data.objects))},
-        [fetchData])
+        authenticate() //не удалять!!!!!!
+        if(!Array.isArray(JSON.parse(localStorage.getItem(`vacancy_id`)))){
+            localStorage.setItem(`vacancy_id`, JSON.stringify([]))
+        }
+        fetchData.then((data) => {setItems(data.data.objects)}).catch(e=> console.log(e))
+    }, [])
     return (
         <HomePageWrapper>
-            <SearchFilter />
+            <SearchFilter catalogue={catalogue} setCatalogue={setCatalogue}/>
         <VacanciesWrapper>
-            <Input
-                icon={<IconSearch/>}
-                
-                size='lg'
-                radius='md'
-                placeholder="Введите название вакансии" 
-                rightSection={
-                <Button radius='md' size="sm" sx={{ position: "relative", right:"12px"}} >
-                    Поиск
-                </Button>
-                }
-                rightSectionWidth={"fit-content"}
-            />
-            {items?.map((item) => <Vacancy text={item}/>)}
+            <SearchBar></SearchBar>
+            {items?.map((item) => <Vacancy text={item} key={item.id}/>)}
+            <PaginationBar activePage={page} setPage={setPage}/>
         </VacanciesWrapper>
         </HomePageWrapper>
     );

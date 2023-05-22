@@ -1,12 +1,12 @@
 import { $authHost } from ".";
 
-export const getFavorites = async(page) => {
+export const getFavorites = async() => {
     try{
+        const ids = JSON.parse(localStorage.getItem(`vacancy_id`))
         const data1 =  await $authHost.get(`${process.env.NEXT_PUBLIC_API_URL}/2.0/vacancies`, 
         {
             params:{
-              //  page:page, count: 4,
-                ids: JSON.parse(localStorage.getItem(`vacancy_id`))
+                ids: ids
             },
             headers:{
                 "x-secret-key": process.env.NEXT_PUBLIC_X_SECRET_KEY,

@@ -5,7 +5,9 @@ export const EmptyLogo = styled(Image)`
     display: flex;
 `
 export const EmptyWrapper = styled.div`
-    margin: 0 auto;
+    margin: 120px auto;
     display: flex;
-    border: solid;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 32px;
 `

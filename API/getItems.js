@@ -9,7 +9,7 @@ export const getFilterItems = async(page, keyword, catalogues, payment_from , pa
             params:{
                 published: 1,
                 page: page, count: 4,
-                catalogues: catalogues, keyword, payment_from, payment_to
+                catalogues: catalogues, keyword: keyword, payment_from:payment_from, payment_to:payment_to
             },
             headers:{
                 "x-secret-key": process.env.NEXT_PUBLIC_X_SECRET_KEY,

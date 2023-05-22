@@ -7,7 +7,7 @@ import { IconSelector, IconChevronDown } from "@tabler/icons-react";
 
 export default function SearchFilter({setFilters}) {
     const [arrCat, setArrCat] = useState([])
-    const [catalogue, setCatalogue] = useState()
+    const [catalogue, setCatalogue] = useState("")
     const [start, setStart] = useState("")
     const [end, setEnd] = useState("")
     const fetchData = getAllCatalogues()
@@ -42,7 +42,7 @@ export default function SearchFilter({setFilters}) {
             </TitleWrapper>
             <SectionWrapper>
             <Text fz="lg" fw={700}>Отрасль</Text>
-                 <Autocomplete
+                <Autocomplete
                 value={catalogue}
                 onChange={setCatalogue}
                 placeholder="Выберите отрасль"
@@ -52,6 +52,7 @@ export default function SearchFilter({setFilters}) {
                 rightSection={<IconChevronDown color="#868e96"/>}
                 radius={"md"}
                 size="lg"
+                data-elem="industry-select"
             />
             </SectionWrapper>
             <SectionWrapper>
@@ -64,6 +65,7 @@ export default function SearchFilter({setFilters}) {
                 onChange={setStart}
                 min={0}
                 step={50}
+                data-elem="salary-from-input"
                 />
                 <StyledNInput
                 radius={"md"}
@@ -73,9 +75,10 @@ export default function SearchFilter({setFilters}) {
                 onChange={setEnd}
                 min={0}
                 step={50}
+                data-elem="salary-to-input"
                 />
             </SectionWrapper>
-            <Button size="lg" radius="md" onClick={setFilter}>Применить</Button>
+            <Button size="lg" radius="md" onClick={setFilter} data-elem="search-button">Применить</Button>
         </DivWrapper>
     )
 }

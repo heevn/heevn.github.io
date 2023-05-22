@@ -5,7 +5,7 @@ import { Pagination } from "@mantine/core";
 export default function PaginationBar({activePage, setPage}) {
     return(
     <PaginationWrapper>
-        <Pagination value={activePage} onChange={setPage} total={40}></Pagination>
+        <Pagination value={activePage} onChange={setPage} total={3}></Pagination>
     </PaginationWrapper>
     )
 }

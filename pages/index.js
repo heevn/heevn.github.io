@@ -1,7 +1,7 @@
 import SearchFilter from "../components/SearchFilter";
 import Vacancy from "../components/Vacancy";
 import { HomePageWrapper, VacanciesWrapper } from "../public/styles";
-import { authenticate } from "../API/auth";
+
 import { useEffect, useState } from "react";
 import { getItems, getFilterItems } from "../API/getItems";
 import PaginationBar from "../components/PaginationBar";
@@ -15,21 +15,13 @@ function Index() {
     const [keyword, setKeyword] = useState(null)
 
     const [loading, setLoading] = useState(false)
-
-    const fetchData = getItems(1, null, null, null, null)
     useEffect(()=>{
         setLoading(true)
         getFilterItems(page, keyword, filters.catalogue, filters.payment_from, filters.payment_to).then((data) => {
             console.log(data);setItems(data.data.objects); setLoading(false);
         })
     }, [page, filters, keyword])
-    useEffect(() => {
-        authenticate() //не удалять!!!!!!
-        if(!Array.isArray(JSON.parse(localStorage.getItem(`vacancy_id`)))){
-            localStorage.setItem(`vacancy_id`, JSON.stringify([]))
-        }
-        fetchData.then((data) => {setItems(data.data.objects)}).catch(e=> console.log(e))
-    }, [])
+
     return (
         <HomePageWrapper>
             <SearchFilter setFilters={setFilters}/>

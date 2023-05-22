@@ -2,7 +2,7 @@ import { useRouter } from "next/router"
 import { getOneItem } from "../../API/getOneItem"
 import Vacancy from "../../components/Vacancy"
 import { useState, useEffect } from "react"
-import { InfoWrapper } from "../styles"
+import { InfoWrapper } from "../../public/styles";
 import ExtInfo from "../../components/ExtInfo"
 
 function Info() {

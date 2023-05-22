@@ -2,7 +2,7 @@ import { getFavorites } from "../API/getFavorites";
 import { getItems } from "../API/mocApi/getItems";
 import EmptyFav from "../components/EmptyFav";
 import Vacancy from "../components/Vacancy";
-import { FavoriteWrapper } from "./styles";
+import { FavoriteWrapper } from "../public/styles";
 import { useState, useEffect } from "react";
 
 function Favorite() {

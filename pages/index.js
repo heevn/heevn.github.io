@@ -1,6 +1,6 @@
 import SearchFilter from "../components/SearchFilter";
 import Vacancy from "../components/Vacancy";
-import { HomePageWrapper, VacanciesWrapper } from "./styles";
+import { HomePageWrapper, VacanciesWrapper } from "../public/styles";
 import { authenticate } from "../API/auth";
 import { useEffect, useState } from "react";
 import { getItems } from "../API/getItems";

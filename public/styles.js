@@ -25,4 +25,3 @@ export const InfoWrapper = styled.div`
 export const FavoriteWrapper = styled(InfoWrapper)`
     row-gap: 16px;
 `
-export default{}
